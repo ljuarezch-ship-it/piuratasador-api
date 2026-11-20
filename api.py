@@ -16,7 +16,11 @@ class Inmueble(BaseModel):
     cochera: float
     amoblado: float
 
-@app.post("/predecir")
+@app.get("/")
+def inicio():
+    return {"estado": "PiuraTasador AI activo"}
+
+@app.api_route("/predecir", methods=["GET", "POST"])
 def predecir(datos: Inmueble):
     df = pd.DataFrame([datos.model_dump()])
     prediccion = ia.predict(df)
