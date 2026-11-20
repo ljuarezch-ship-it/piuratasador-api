@@ -20,7 +20,8 @@ class Inmueble(BaseModel):
 def inicio():
     return {"estado": "PiuraTasador AI activo"}
 
-@app.api_route("/predecir", methods=["GET", "POST"])
+@app.post("/")
+@app.post("/predecir")
 def predecir(datos: Inmueble):
     df = pd.DataFrame([datos.model_dump()])
     prediccion = ia.predict(df)
