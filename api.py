@@ -25,4 +25,4 @@ def inicio():
 def predecir(datos: Inmueble):
     df = pd.DataFrame([datos.model_dump()])
     prediccion = ia.predict(df)
-    return {"precio": round(float(prediccion), 2)}
+    return {"precio": round(float(prediccion[0]), 2)}
